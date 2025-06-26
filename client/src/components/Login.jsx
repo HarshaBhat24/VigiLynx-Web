@@ -58,7 +58,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-10 md:py-16">
+    <div className="min-h-screen flex items-center justify-center px-3 sm:px-4 py-6 sm:py-10 md:py-16">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -66,46 +66,47 @@ function Login() {
         className="card w-full max-w-2xl flex flex-col md:flex-row overflow-hidden shadow-hover relative bg-card"
       >
         {/* Slogan and decorative elements */}
-        <div className="absolute top-0 left-0 right-0 flex flex-col">
-          <div className="bg-primary/10 py-1.5 px-4 text-center text-sm font-medium text-primary">
-            One Click and boom! Nah not in our Watch
+        <div className="absolute top-0 left-0 right-0 flex flex-col z-10">
+          <div className="bg-primary/10 py-1.5 px-3 sm:px-4 text-center text-xs sm:text-sm font-medium text-primary">
+            <span className="hidden sm:inline">One Click and boom! Nah not in our Watch</span>
+            <span className="sm:hidden">Your Digital Guardian</span>
           </div>
           <div className="h-1 bg-gradient-primary"></div>
         </div>
         
         {/* Brand Section - adjusted padding to account for slogan */}
-        <div className="md:w-1/2 p-6 sm:p-8 pt-10 sm:pt-10 bg-gradient-radial from-primary/5 to-transparent flex flex-col justify-center items-center relative border-b md:border-b-0 md:border-r border-border">
+        <div className="md:w-1/2 p-4 sm:p-6 md:p-8 pt-8 sm:pt-10 bg-gradient-radial from-primary/5 to-transparent flex flex-col justify-center items-center relative border-b md:border-b-0 md:border-r border-border">
           <motion.div
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6 p-5 rounded-full bg-primary/10 ring-1 ring-primary/20 animate-float"
+            className="mb-4 sm:mb-6 p-3 sm:p-5 rounded-full bg-primary/10 ring-1 ring-primary/20 animate-float"
           >
-            <ShieldCheck size={48} className="text-primary" />
+            <ShieldCheck size={32} className="sm:w-12 sm:h-12 text-primary" />
           </motion.div>
           
-          <h1 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-center bg-gradient-primary bg-clip-text text-transparent animate-gradient-x">VigiLynx</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-balance text-center bg-gradient-primary bg-clip-text text-transparent animate-gradient-x">VigiLynx</h1>
           
-          <p className="text-muted-foreground text-center max-w-xs mb-10">
+          <p className="text-muted-foreground text-center text-sm sm:text-base max-w-xs mb-6 sm:mb-10 leading-relaxed">
             Protecting your digital world with advanced threat intelligence and analysis.
           </p>
           
-          <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
-            <div className="flex flex-col items-center p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
-              <Shield size={18} className="text-primary mb-2" />
-              <span className="text-xs font-medium">URL Scanning</span>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-xs">
+            <div className="flex flex-col items-center p-3 sm:p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
+              <Shield size={16} className="sm:w-[18px] sm:h-[18px] text-primary mb-2" />
+              <span className="text-xs font-medium text-center">URL Scanning</span>
             </div>
-            <div className="flex flex-col items-center p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
-              <Lock size={18} className="text-primary mb-2" />
-              <span className="text-xs font-medium">Threat Analysis</span>
+            <div className="flex flex-col items-center p-3 sm:p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
+              <Lock size={16} className="sm:w-[18px] sm:h-[18px] text-primary mb-2" />
+              <span className="text-xs font-medium text-center">Threat Analysis</span>
             </div>
-            <div className="flex flex-col items-center p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
-              <User size={18} className="text-primary mb-2" />
-              <span className="text-xs font-medium">Parental Controls</span>
+            <div className="flex flex-col items-center p-3 sm:p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
+              <User size={16} className="sm:w-[18px] sm:h-[18px] text-primary mb-2" />
+              <span className="text-xs font-medium text-center">Parental Controls</span>
             </div>
-            <div className="flex flex-col items-center p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
-              <Mail size={18} className="text-primary mb-2" />
-              <span className="text-xs font-medium">Alert System</span>
+            <div className="flex flex-col items-center p-3 sm:p-4 glass rounded-lg hover:shadow-hover transition-all-normal">
+              <Mail size={16} className="sm:w-[18px] sm:h-[18px] text-primary mb-2" />
+              <span className="text-xs font-medium text-center">Alert System</span>
             </div>
           </div>
         </div>

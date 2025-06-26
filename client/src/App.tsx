@@ -37,7 +37,7 @@ const pageVariants = {
     y: 0,
     transition: {
       duration: 0.4,
-      ease: 'easeOut',
+      ease: [0.4, 0, 0.2, 1] as any,
     },
   },
   exit: {
@@ -45,7 +45,7 @@ const pageVariants = {
     y: -20,
     transition: {
       duration: 0.3,
-      ease: 'easeIn',
+      ease: [0.4, 0, 0.6, 1] as any,
     },
   },
 };

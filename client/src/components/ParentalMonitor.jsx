@@ -65,51 +65,54 @@ function ParentalMonitor() {
   };
 
   return (
-    <div className="container max-w-6xl mx-auto">
-      <div className="mb-8">
+    <div className="container max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
+      <div className="mb-6 sm:mb-8">
         <motion.div 
           initial={{ opacity: 0, y: -10 }} 
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          className="flex flex-col gap-4 sm:gap-4 md:flex-row md:items-center md:justify-between"
         >
           <div>
-            <h2 className="text-2xl font-bold mb-2 flex items-center">
-              <Shield className="mr-2 text-indigo-500" size={28} /> 
+            <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 flex items-center">
+              <Shield className="mr-2 text-indigo-500" size={24} /> 
               <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
                 Parental Monitoring
               </span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Protect your family and monitor online activities with advanced controls.
             </p>
           </div>
           
-          <div className="flex items-center gap-2">
-            <button className="btn btn-primary bg-indigo-500 hover:bg-indigo-600">
-              <UserPlus size={16} className="mr-2" /> Add Child Account
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2">
+            <button className="btn btn-primary bg-indigo-500 hover:bg-indigo-600 text-sm">
+              <UserPlus size={14} className="mr-1 sm:mr-2" /> 
+              <span className="hidden sm:inline">Add Child Account</span>
+              <span className="sm:hidden">Add Child</span>
             </button>
-            <button className="btn btn-outline border-indigo-200 text-indigo-600 dark:border-indigo-800 dark:text-indigo-400">
-              <RefreshCw size={16} className="mr-2" /> Refresh
+            <button className="btn btn-outline border-indigo-200 text-indigo-600 dark:border-indigo-800 dark:text-indigo-400 text-sm">
+              <RefreshCw size={14} className="mr-1 sm:mr-2" /> 
+              <span className="hidden sm:inline">Refresh</span>
             </button>
           </div>
         </motion.div>
       </div>
 
       {/* Status overview section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="card bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-purple-900/20 border-indigo-200 dark:border-indigo-800"
+          className="card bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-purple-900/20 border-indigo-200 dark:border-indigo-800 p-3 sm:p-4 lg:p-6"
         >
-          <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
-              <Users className="text-indigo-600 dark:text-indigo-400" size={24} />
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
+              <Users className="text-indigo-600 dark:text-indigo-400" size={20} />
             </div>
             <div>
-              <p className="text-sm text-indigo-800 dark:text-indigo-300 font-medium">Monitored Accounts</p>
-              <h3 className="text-2xl font-bold text-indigo-900 dark:text-indigo-100">3</h3>
+              <p className="text-xs sm:text-sm text-indigo-800 dark:text-indigo-300 font-medium">Monitored Accounts</p>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-indigo-900 dark:text-indigo-100">3</h3>
             </div>
           </div>
         </motion.div>
@@ -118,15 +121,15 @@ function ParentalMonitor() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="card bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800"
+          className="card bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800 p-3 sm:p-4 lg:p-6"
         >
-          <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
-              <AlertTriangle className="text-amber-600 dark:text-amber-400" size={24} />
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
+              <AlertTriangle className="text-amber-600 dark:text-amber-400" size={20} />
             </div>
             <div>
-              <p className="text-sm text-amber-800 dark:text-amber-300 font-medium">Alerts Today</p>
-              <h3 className="text-2xl font-bold text-amber-900 dark:text-amber-100">5</h3>
+              <p className="text-xs sm:text-sm text-amber-800 dark:text-amber-300 font-medium">Alerts Today</p>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-amber-900 dark:text-amber-100">5</h3>
             </div>
           </div>
         </motion.div>
@@ -135,15 +138,15 @@ function ParentalMonitor() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="card bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800"
+          className="card bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800 p-3 sm:p-4 lg:p-6 sm:col-span-2 lg:col-span-1"
         >
-          <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
-              <Activity className="text-emerald-600 dark:text-emerald-400" size={24} />
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+              <Activity className="text-emerald-600 dark:text-emerald-400" size={20} />
             </div>
             <div>
-              <p className="text-sm text-emerald-800 dark:text-emerald-300 font-medium">Protected Hours</p>
-              <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100">384</h3>
+              <p className="text-xs sm:text-sm text-emerald-800 dark:text-emerald-300 font-medium">Protected Hours</p>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-900 dark:text-emerald-100">384</h3>
             </div>
           </div>
         </motion.div>

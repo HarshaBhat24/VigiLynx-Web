@@ -46,12 +46,12 @@ const AnalysisResult = memo(function AnalysisResult({ result }) {
   };
 
   const renderDetailItem = (label, value, icon = null) => (
-    <div className="flex items-start gap-2 py-2 border-b border-border last:border-0">
-      <div className="w-36 text-sm font-medium text-muted-foreground flex items-center gap-1">
+    <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2 py-2 border-b border-border last:border-0">
+      <div className="w-full sm:w-36 text-sm font-medium text-muted-foreground flex items-center gap-1">
         {icon && <span className="text-primary">{icon}</span>}
         {label}
       </div>
-      <div className="flex-1 text-sm">{value || 'N/A'}</div>
+      <div className="flex-1 text-sm break-words">{value || 'N/A'}</div>
     </div>
   );
 
@@ -215,18 +215,18 @@ const AnalysisResult = memo(function AnalysisResult({ result }) {
     const isExpanded = expandedSection === id;
     
     return (
-      <div className="border border-border rounded-lg overflow-hidden mb-4 transition-all-normal">
+      <div className="border border-border rounded-lg overflow-hidden mb-3 sm:mb-4 transition-all-normal">
         <button
           onClick={() => toggleSection(id)}
-          className={`w-full flex items-center justify-between p-4 text-left transition-all-normal ${
+          className={`w-full flex items-center justify-between p-3 sm:p-4 text-left transition-all-normal ${
             isExpanded ? 'bg-secondary/30' : 'hover:bg-secondary/20'
           }`}
         >
           <div className="flex items-center gap-2">
             {icon}
-            <h3 className="text-lg font-medium">{title}</h3>
+            <h3 className="text-base sm:text-lg font-medium">{title}</h3>
           </div>
-          {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
         </button>
         
         <motion.div
@@ -235,7 +235,7 @@ const AnalysisResult = memo(function AnalysisResult({ result }) {
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <div className="p-4 bg-card">{content}</div>
+          <div className="p-3 sm:p-4 bg-card">{content}</div>
         </motion.div>
       </div>
     );
@@ -247,25 +247,25 @@ const AnalysisResult = memo(function AnalysisResult({ result }) {
       animate={{ opacity: 1, y: 0 }}
       className="card card-gradient"
     >
-      <div className="mb-6">
-        <div className="flex items-center justify-between">
+      <div className="mb-4 sm:mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-3">
             {renderResultIcon()}
-            <h2 className="text-xl font-semibold">Analysis Results</h2>
+            <h2 className="text-lg sm:text-xl font-semibold">Analysis Results</h2>
           </div>
           
-          <div className="status-badge status-badge-info">
-            <Info size={14} className="mr-1" /> 
-            <span>Report ID: #{result.scan_id?.substring(0, 8) || 'N/A'}</span>
+          <div className="status-badge status-badge-info text-xs sm:text-sm">
+            <Info size={12} className="mr-1" /> 
+            <span>ID: #{result.scan_id?.substring(0, 8) || 'N/A'}</span>
           </div>
         </div>
         
         <div className="divider"></div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="card card-compact bg-secondary/30">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Risk Score</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+          <div className="card card-compact bg-secondary/30 p-3 sm:p-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <span className="text-xs sm:text-sm font-medium">Risk Score</span>
               {getRiskIndicator(modifiedResult.risk_score || 0)}
             </div>
             <div className="mt-2">
@@ -277,27 +277,27 @@ const AnalysisResult = memo(function AnalysisResult({ result }) {
                   className={`h-full ${getSeverityColor(modifiedResult.risk_score || 0) === 'danger' ? 'bg-danger' : getSeverityColor(modifiedResult.risk_score || 0) === 'warning' ? 'bg-warning' : 'bg-success'}`}
                 />
               </div>
-              <div className="mt-1 text-2xl font-bold">{modifiedResult.risk_score || 0}/10</div>
+              <div className="mt-1 text-xl sm:text-2xl font-bold">{modifiedResult.risk_score || 0}/10</div>
             </div>
           </div>
           
-          <div className="card card-compact bg-secondary/30">
-            <div className="text-sm font-medium mb-1">Analysis Type</div>
+          <div className="card card-compact bg-secondary/30 p-3 sm:p-4">
+            <div className="text-xs sm:text-sm font-medium mb-1">Analysis Type</div>
             <div className="flex items-center gap-2">
               {result.input_type === 'file' ? (
-                <FileText size={18} className="text-primary" />
+                <FileText size={16} className="text-primary" />
               ) : (
-                <Link size={18} className="text-primary" />
+                <Link size={16} className="text-primary" />
               )}
-              <span className="font-medium capitalize">{result.input_type || 'URL'} Analysis</span>
+              <span className="font-medium capitalize text-sm">{result.input_type || 'URL'} Analysis</span>
             </div>
           </div>
           
-          <div className="card card-compact bg-secondary/30">
-            <div className="text-sm font-medium mb-1">Detection Status</div>
+          <div className="card card-compact bg-secondary/30 p-3 sm:p-4 sm:col-span-2 lg:col-span-1">
+            <div className="text-xs sm:text-sm font-medium mb-1">Detection Status</div>
             <div className="flex items-center gap-2">
-              <Shield size={18} className={`${getSeverityColor(modifiedResult.risk_score || 0) === 'danger' ? 'text-danger' : getSeverityColor(modifiedResult.risk_score || 0) === 'warning' ? 'bg-warning' : 'bg-success'}`} />
-              <span className="font-medium">
+              <Shield size={16} className={`${getSeverityColor(modifiedResult.risk_score || 0) === 'danger' ? 'text-danger' : getSeverityColor(modifiedResult.risk_score || 0) === 'warning' ? 'bg-warning' : 'bg-success'}`} />
+              <span className="font-medium text-sm">
                 {result.threats?.length ? `${result.threats.length} Threats Detected` : 'No Threats Detected'}
               </span>
             </div>

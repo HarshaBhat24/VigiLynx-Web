@@ -1,0 +1,16 @@
+# Railway Configuration
+# This file configures the build and deployment process for Railway
+
+[build]
+  builder = "NIXPACKS"
+
+[deploy]
+  startCommand = "cd server && npm start"
+  restartPolicyType = "ON_FAILURE"
+  restartPolicyMaxRetries = 10
+
+[environments.production]
+  variables = [
+    "NODE_ENV=production",
+    "PORT=5000"
+  ]

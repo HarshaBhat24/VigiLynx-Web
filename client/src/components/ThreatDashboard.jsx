@@ -130,57 +130,57 @@ function ThreatDashboard() {
   };
 
   return (
-    <div className="container max-w-6xl mx-auto">
+    <div className="container max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        className="mb-6 sm:mb-8 flex flex-col gap-4 sm:gap-4 md:flex-row md:items-center md:justify-between"
       >
         <div>
-          <h2 className="text-2xl font-bold mb-2 flex items-center">
-            <BarChart3 className="mr-2 text-blue-500" size={28} />
+          <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 flex items-center">
+            <BarChart3 className="mr-2 text-blue-500" size={24} />
             <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
               Threat Dashboard
             </span>
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             Comprehensive overview of detected threats and security insights.
           </p>
         </div>
         
         <div className="flex items-center gap-2 flex-wrap">
           {/* Timeframe selector */}
-          <div className="flex items-center rounded-lg bg-secondary border border-border overflow-hidden">
+          <div className="flex items-center rounded-lg bg-secondary border border-border overflow-hidden text-xs sm:text-sm">
             <button 
-              className={`px-3 py-1.5 text-sm ${timeframe === '24hours' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
+              className={`px-2 sm:px-3 py-1.5 ${timeframe === '24hours' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
               onClick={() => setTimeframe('24hours')}
             >
               24h
             </button>
             <button 
-              className={`px-3 py-1.5 text-sm ${timeframe === '7days' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
+              className={`px-2 sm:px-3 py-1.5 ${timeframe === '7days' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
               onClick={() => setTimeframe('7days')}
             >
               7d
             </button>
             <button 
-              className={`px-3 py-1.5 text-sm ${timeframe === '30days' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
+              className={`px-2 sm:px-3 py-1.5 ${timeframe === '30days' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
               onClick={() => setTimeframe('30days')}
             >
               30d
             </button>
             <button 
-              className={`px-3 py-1.5 text-sm ${timeframe === 'all' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
+              className={`px-2 sm:px-3 py-1.5 ${timeframe === 'all' ? 'bg-blue-500 text-white' : 'hover:bg-muted'}`}
               onClick={() => setTimeframe('all')}
             >
               All
             </button>
           </div>
           
-          <button className="btn btn-outline border-blue-200 text-blue-600 dark:border-blue-800 dark:text-blue-400">
-            <RefreshCw size={16} className="mr-2" />
-            Refresh
+          <button className="btn btn-outline border-blue-200 text-blue-600 dark:border-blue-800 dark:text-blue-400 text-sm">
+            <RefreshCw size={14} className="mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Refresh</span>
           </button>
         </div>
       </motion.div>
@@ -206,20 +206,20 @@ function ThreatDashboard() {
       {!loading && !error && (
         <>
           {/* Stats overview */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-cyan-900/20 border-blue-200 dark:border-blue-800"
+              className="card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-cyan-900/20 border-blue-200 dark:border-blue-800 p-3 sm:p-4 lg:p-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
-                  <Activity className="text-blue-600 dark:text-blue-400" size={24} />
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
+                  <Activity className="text-blue-600 dark:text-blue-400" size={16} />
                 </div>
                 <div>
-                  <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">Total Scans</p>
-                  <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-100">
+                  <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 font-medium">Total Scans</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900 dark:text-blue-100">
                     {metrics.totalScans}
                   </h3>
                 </div>
@@ -230,15 +230,15 @@ function ThreatDashboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="card bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-pink-900/20 border-red-200 dark:border-red-800"
+              className="card bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-pink-900/20 border-red-200 dark:border-red-800 p-3 sm:p-4 lg:p-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center">
-                  <AlertTriangle className="text-red-600 dark:text-red-400" size={24} />
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center">
+                  <AlertTriangle className="text-red-600 dark:text-red-400" size={16} />
                 </div>
                 <div>
-                  <p className="text-sm text-red-700 dark:text-red-300 font-medium">Threats Detected</p>
-                  <h3 className="text-2xl font-bold text-red-900 dark:text-red-100">
+                  <p className="text-xs sm:text-sm text-red-700 dark:text-red-300 font-medium">Threats Detected</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-red-900 dark:text-red-100">
                     {metrics.threatsDetected}
                   </h3>
                 </div>
@@ -249,15 +249,15 @@ function ThreatDashboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800"
+              className="card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800 p-3 sm:p-4 lg:p-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
-                  <Shield className="text-green-600 dark:text-green-400" size={24} />
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
+                  <Shield className="text-green-600 dark:text-green-400" size={16} />
                 </div>
                 <div>
-                  <p className="text-sm text-green-700 dark:text-green-300 font-medium">Safe Items</p>
-                  <h3 className="text-2xl font-bold text-green-900 dark:text-green-100">
+                  <p className="text-xs sm:text-sm text-green-700 dark:text-green-300 font-medium">Safe Items</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-900 dark:text-green-100">
                     {metrics.safeItems}
                   </h3>
                 </div>
@@ -268,15 +268,15 @@ function ThreatDashboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-indigo-900/20 border-purple-200 dark:border-purple-800"
+              className="card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-indigo-900/20 border-purple-200 dark:border-purple-800 p-3 sm:p-4 lg:p-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">
-                  <BarChart3 className="text-purple-600 dark:text-purple-400" size={24} />
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">
+                  <BarChart3 className="text-purple-600 dark:text-purple-400" size={16} />
                 </div>
                 <div>
-                  <p className="text-sm text-purple-700 dark:text-purple-300 font-medium">Safety Score</p>
-                  <h3 className="text-2xl font-bold text-purple-900 dark:text-purple-100">
+                  <p className="text-xs sm:text-sm text-purple-700 dark:text-purple-300 font-medium">Safety Score</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-purple-900 dark:text-purple-100">
                     {metrics.averageSafetyScore}%
                   </h3>
                 </div>
@@ -285,7 +285,7 @@ function ThreatDashboard() {
           </div>
 
           {/* Main dashboard grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Left column - threat distribution */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -293,8 +293,8 @@ function ThreatDashboard() {
               transition={{ delay: 0.2 }}
               className="lg:col-span-2"
             >
-              <div className="card mb-6">
-                <h3 className="text-xl font-semibold mb-6">Threat Distribution</h3>
+              <div className="card mb-4 sm:mb-6">
+                <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Threat Distribution</h3>
                 
                 {threatTypeData.length > 0 ? (
                   <div className="space-y-4">
@@ -333,43 +333,43 @@ function ThreatDashboard() {
               
               {/* Recent scans */}
               <div className="card">
-                <h3 className="text-xl font-semibold mb-4">Recent Scans</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Recent Scans</h3>
                 
                 <div className="overflow-x-auto">
-                  <table className="w-full">
+                  <table className="w-full text-xs sm:text-sm">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="py-2 px-3 text-left text-sm font-medium text-muted-foreground">Type</th>
-                        <th className="py-2 px-3 text-left text-sm font-medium text-muted-foreground">Input</th>
-                        <th className="py-2 px-3 text-left text-sm font-medium text-muted-foreground">Safety Score</th>
-                        <th className="py-2 px-3 text-left text-sm font-medium text-muted-foreground">Status</th>
-                        <th className="py-2 px-3 text-left text-sm font-medium text-muted-foreground">Date</th>
+                        <th className="py-2 px-1 sm:px-3 text-left font-medium text-muted-foreground">Type</th>
+                        <th className="py-2 px-1 sm:px-3 text-left font-medium text-muted-foreground">Input</th>
+                        <th className="py-2 px-1 sm:px-3 text-left font-medium text-muted-foreground">Safety Score</th>
+                        <th className="py-2 px-1 sm:px-3 text-left font-medium text-muted-foreground">Status</th>
+                        <th className="py-2 px-1 sm:px-3 text-left font-medium text-muted-foreground hidden sm:table-cell">Date</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border">
                       {insights.slice(0, 5).map((scan) => (
                         <tr key={scan.id} className="hover:bg-muted/50">
-                          <td className="py-2 px-3">
+                          <td className="py-2 px-1 sm:px-3">
                             <div className="flex items-center">
                               {getThreatTypeIcon(scan.type)}
-                              <span className="ml-1.5 capitalize text-sm">{scan.type}</span>
+                              <span className="ml-1 sm:ml-1.5 capitalize hidden sm:inline">{scan.type}</span>
                             </div>
                           </td>
-                          <td className="py-2 px-3">
-                            <span className="text-sm font-medium truncate block max-w-[200px]">{scan.input}</span>
+                          <td className="py-2 px-1 sm:px-3">
+                            <span className="font-medium truncate block max-w-[100px] sm:max-w-[200px]">{scan.input}</span>
                           </td>
-                          <td className="py-2 px-3">
+                          <td className="py-2 px-1 sm:px-3">
                             <div className="flex items-center">
-                              <span className={`h-2 w-2 rounded-full mr-1.5 ${
+                              <span className={`h-2 w-2 rounded-full mr-1 sm:mr-1.5 ${
                                 (scan.safety_score > 70) ? 'bg-green-500' :
                                 (scan.safety_score > 40) ? 'bg-amber-500' :
                                 'bg-red-500'
                               }`}></span>
-                              <span className="text-sm">{scan.safety_score}%</span>
+                              <span>{scan.safety_score}%</span>
                             </div>
                           </td>
-                          <td className="py-2 px-3">
-                            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                          <td className="py-2 px-1 sm:px-3">
+                            <span className={`inline-flex items-center px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-medium ${
                               scan.is_safe 
                                 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
                                 : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
@@ -377,7 +377,7 @@ function ThreatDashboard() {
                               {scan.is_safe ? 'Safe' : 'Threat'}
                             </span>
                           </td>
-                          <td className="py-2 px-3 text-sm text-muted-foreground">
+                          <td className="py-2 px-1 sm:px-3 text-muted-foreground hidden sm:table-cell">
                             {formatDate(scan.created_at)}
                           </td>
                         </tr>

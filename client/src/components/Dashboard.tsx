@@ -198,43 +198,42 @@ export const Dashboard = () => {
           initial="hidden"
           animate="visible"
           className="space-y-8"
-        >
-          {/* Header */}
+        >          {/* Header */}
           <motion.div
             variants={itemVariants}
-            className={`relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 p-8 rounded-[2rem] ${glassEffect} ${cardHoverEffect} ${gradientBorder}`}
+            className={`relative flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 lg:p-8 rounded-2xl lg:rounded-[2rem] ${glassEffect} ${cardHoverEffect} ${gradientBorder}`}
           >
             <div className="flex-1">
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <motion.div
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.5 }}
-                  className="relative p-3 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 shadow-lg group"
+                  className="relative p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 shadow-lg group self-start"
                 >
-                  <Shield className="h-8 w-8 text-white" />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+                  <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
                 </motion.div>
-                <div>
-                  <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
+                <div className="min-w-0 flex-1">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
                     Security Dashboard
                   </h1>
-                  <p className="mt-2 text-lg text-slate-600 dark:text-slate-300">
+                  <p className="mt-1 sm:mt-2 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300">
                     Monitor and manage your security status
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.05, rotate: 15 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-3 rounded-xl ${glassEffect} text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:bg-white/90 dark:hover:bg-slate-700/90`}
+                className={`p-2.5 sm:p-3 rounded-xl ${glassEffect} text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:bg-white/90 dark:hover:bg-slate-700/90 self-start sm:self-auto`}
               >
                 {theme === 'dark' ? (
-                  <Sun className="h-5 w-5" />
+                  <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
                 ) : (
-                  <Moon className="h-5 w-5" />
+                  <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
                 )}
               </motion.button>
               <motion.button
@@ -243,10 +242,10 @@ export const Dashboard = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 animate={controls}
-                className={`relative rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:from-indigo-500 hover:to-violet-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group ${glassEffect}`}
+                className={`relative rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:from-indigo-500 hover:to-violet-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group ${glassEffect}`}
               >
                 {isScanning ? (
-                  <span className="flex items-center">
+                  <span className="flex items-center justify-center">
                     <Loader2 className="h-4 w-4 animate-spin mr-2" />
                     Scanning...
                   </span>
@@ -266,12 +265,10 @@ export const Dashboard = () => {
                 )}
               </motion.button>
             </div>
-          </motion.div>
-
-          {/* Security Metrics */}
+          </motion.div>          {/* Security Metrics */}
           <motion.div
             variants={containerVariants}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2 lg:grid-cols-4"
           >
             {securityMetrics.map((metric) => (
               <motion.div
@@ -280,51 +277,50 @@ export const Dashboard = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 onHoverStart={() => setHoveredMetric(metric.title)}
                 onHoverEnd={() => setHoveredMetric(null)}
-                className={`group relative rounded-[1.5rem] p-6 ${glassEffect} ${cardHoverEffect} ${gradientBorder} transition-all duration-300`}
+                className={`group relative rounded-xl lg:rounded-[1.5rem] p-3 sm:p-4 lg:p-6 ${glassEffect} ${cardHoverEffect} ${gradientBorder} transition-all duration-300`}
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.5 }}
-                    className={`relative rounded-2xl p-3 bg-gradient-to-br ${metric.gradient} group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className={`relative rounded-xl lg:rounded-2xl p-2 lg:p-3 bg-gradient-to-br ${metric.gradient} group-hover:scale-110 transition-transform duration-300 shadow-lg self-start`}
                   >
-                    <metric.icon className="h-6 w-6 text-white" />
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+                    <metric.icon className="h-4 w-4 lg:h-6 lg:w-6 text-white" />
+                    <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
                     {hoveredMetric === metric.title && (
                       <motion.div
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
-                        className="absolute -top-2 -right-2 bg-white dark:bg-slate-700 rounded-full p-1 shadow-lg"
+                        className="absolute -top-1 lg:-top-2 -right-1 lg:-right-2 bg-white dark:bg-slate-700 rounded-full p-0.5 lg:p-1 shadow-lg"
                       >
-                        <ShieldCheck className="h-4 w-4 text-indigo-500" />
+                        <ShieldCheck className="h-3 w-3 lg:h-4 lg:w-4 text-indigo-500" />
                       </motion.div>
-                    )}
-                  </motion.div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                    )}                  </motion.div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 truncate">
                       {metric.title}
                     </p>
-                    <div className="mt-1 flex items-baseline">
-                      <p className="text-2xl font-bold text-slate-900 dark:text-white">
+                    <div className="mt-1 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+                      <p className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">
                         {metric.value}
                       </p>
                       <motion.span
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 }}
-                        className={`ml-2 flex items-baseline text-sm font-semibold ${
+                        className={`flex items-center text-xs sm:text-sm font-semibold ${
                           metric.trend === 'up'
                             ? 'text-indigo-600 dark:text-indigo-400'
                             : 'text-indigo-600 dark:text-indigo-400'
                         }`}
                       >
                         {metric.trend === 'up' ? (
-                          <ArrowUpRight className="h-4 w-4" />
+                          <ArrowUpRight className="h-3 w-3 sm:h-4 sm:w-4" />
                         ) : (
-                          <ArrowDownRight className="h-4 w-4" />
+                          <ArrowDownRight className="h-3 w-3 sm:h-4 sm:w-4" />
                         )}
-                        <span className="ml-1">{metric.change}</span>
+                        <span className="ml-0.5 sm:ml-1">{metric.change}</span>
                       </motion.span>
                     </div>
                   </div>
