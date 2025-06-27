@@ -27,7 +27,7 @@ Before starting, ensure you have:
 
 ### 1.1 Clone and Navigate to Project
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/HarshaBhat24/VigiLynx-Web
 cd VigiLynx-Web
 ```
 
@@ -354,61 +354,6 @@ vercel env add SUPABASE_ANON_KEY
 vercel env add SUPABASE_SERVICE_ROLE_KEY
 vercel env add GOOGLE_API_KEY
 vercel env add VIRUSTOTAL_API_KEY
-```
-
-### Option B: Railway (Simple Full-Stack)
-
-#### 7.1 Install Railway CLI
-```bash
-npm install -g @railway/cli
-```
-
-#### 7.2 Login and Deploy
-```bash
-railway login
-railway init
-railway up
-```
-
-#### 7.3 Set Environment Variables
-```bash
-railway variables set SUPABASE_URL=your_url
-railway variables set SUPABASE_ANON_KEY=your_key
-railway variables set SUPABASE_SERVICE_ROLE_KEY=your_service_key
-railway variables set GOOGLE_API_KEY=your_google_key
-railway variables set VIRUSTOTAL_API_KEY=your_virustotal_key
-railway variables set NODE_ENV=production
-```
-
-### Option C: Netlify + Heroku (Separate Frontend/Backend)
-
-#### 7.1 Frontend on Netlify
-1. Connect your GitHub repository to Netlify
-2. Set build settings:
-   - **Build command**: `cd client && npm install --legacy-peer-deps && npm run build`
-   - **Publish directory**: `client/dist`
-   - **Base directory**: `/`
-3. Add environment variables in Netlify dashboard:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-   - `VITE_API_BASE_URL` (your Heroku backend URL)
-
-#### 7.2 Backend on Heroku
-```bash
-# Install Heroku CLI first
-# Create Heroku app
-heroku create vigilynx-web-server
-
-# Set environment variables
-heroku config:set SUPABASE_URL=your_url
-heroku config:set SUPABASE_ANON_KEY=your_key
-heroku config:set SUPABASE_SERVICE_ROLE_KEY=your_service_key
-heroku config:set GOOGLE_API_KEY=your_google_key
-heroku config:set VIRUSTOTAL_API_KEY=your_virustotal_key
-heroku config:set NODE_ENV=production
-
-# Deploy server subdirectory
-git subtree push --prefix server heroku main
 ```
 
 ## 🌐 Step 8: Domain and SSL Configuration
