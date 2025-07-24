@@ -60,8 +60,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Srikara354/-VigiLynx-
-cd -VigiLynx-
+git clone https://github.com/HarshaBhat24/VigiLynx-Web
+cd VigiLynx-Web
 ```
 ### 2. Set Up Environment Variables
 Create a .env file in both the client and server directories based on the following templates:
