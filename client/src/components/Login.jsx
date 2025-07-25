@@ -63,7 +63,7 @@ function Login() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="card w-full max-w-2xl flex flex-col md:flex-row overflow-hidden shadow-hover relative bg-card"
+        className="card w-full max-w-4xl flex flex-col md:flex-row overflow-hidden shadow-hover relative bg-card"
       >
         {/* Slogan and decorative elements */}
         <div className="absolute top-0 left-0 right-0 flex flex-col z-10">
@@ -111,13 +111,13 @@ function Login() {
           </div>
         </div>
 
-        {/* Auth Form Section - adjusted padding to account for slogan */}
-        <div className="md:w-1/2 p-6 sm:p-8 pt-10 sm:pt-10 flex flex-col justify-center">
+        {/* Auth Form Section - increased padding and spacing */}
+        <div className="md:w-1/2 p-8 sm:p-10 md:p-12 pt-12 sm:pt-12 flex flex-col justify-center">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="text-xl font-semibold mb-6"
+            className="text-2xl font-semibold mb-8"
           >
             {isSignUp ? 'Create Your Account' : 'Welcome Back'}
           </motion.h2>
@@ -164,14 +164,14 @@ function Login() {
             </button>
           </div>
 
-          <form onSubmit={handleEmailAuth} className="w-full space-y-5 mb-6">
+          <form onSubmit={handleEmailAuth} className="w-full space-y-6 mb-8">
             <div className="form-group">
-              <label htmlFor="email" className="form-label mb-1.5 block text-sm font-medium">
-                Email
+              <label htmlFor="email" className="form-label mb-2 block text-sm font-medium">
+                Email Address
               </label>
               <div className="input-group">
                 <div className="input-group-text">
-                  <Mail size={16} />
+                  <Mail size={18} />
                 </div>
                 <input
                   id="email"
@@ -179,7 +179,7 @@ function Login() {
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input"
+                  className="input text-base py-3 px-4"
                   required
                   disabled={isLoading}
                 />
@@ -187,12 +187,12 @@ function Login() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password" className="form-label mb-1.5 block text-sm font-medium">
+              <label htmlFor="password" className="form-label mb-2 block text-sm font-medium">
                 Password
               </label>
               <div className="input-group">
                 <div className="input-group-text">
-                  <Lock size={16} />
+                  <Lock size={18} />
                 </div>
                 <input
                   id="password"
@@ -200,7 +200,7 @@ function Login() {
                   placeholder={isSignUp ? "Create a secure password" : "Enter your password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="input"
+                  className="input text-base py-3 px-4"
                   required
                   disabled={isLoading}
                   minLength={isSignUp ? 8 : undefined}
@@ -211,16 +211,16 @@ function Login() {
                   className="input-group-text !bg-transparent hover:!bg-muted"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
               {isSignUp && (
                 <div>
-                  <p className="text-xs text-muted-foreground mt-1.5">
+                  <p className="text-xs text-muted-foreground mt-2">
                     Use at least 8 characters with a mix of letters and numbers.
                   </p>
                   {password && password.length >= 6 && (
-                    <PasswordSecurityCheck password={password} className="mt-2" />
+                    <PasswordSecurityCheck password={password} className="mt-3" />
                   )}
                 </div>
               )}
@@ -231,7 +231,7 @@ function Login() {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isLoading}
-              className={`btn w-full btn-gradient shadow-md transition-all-normal ${isLoading ? 'btn-loading' : ''}`}
+              className={`btn w-full btn-gradient shadow-md transition-all-normal py-3 px-6 text-base font-semibold ${isLoading ? 'btn-loading' : ''}`}
             >
               {isLoading ? '' : (isSignUp ? 'Create Account' : 'Sign In')}
             </motion.button>
@@ -246,13 +246,38 @@ function Login() {
             </div>
           </div>
 
+          {/* Guest Access Section - Made more prominent */}
+          <div className="mb-6 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200/50 dark:border-blue-700/50">
+            <div className="text-center mb-3">
+              <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-1">
+                🚀 Try VigiLynx Without Signing Up
+              </h3>
+              <p className="text-xs text-blue-600 dark:text-blue-300">
+                Explore our cybersecurity features instantly
+              </p>
+              <p className="text-xs text-black-500 dark:text-blue-400 mt-1">
+                Please go with this option as the authentication service is currently down.
+              </p>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={continueAsGuest}
+              disabled={isLoading}
+              className="btn btn-outline w-full border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-300 dark:hover:bg-blue-900/30 transition-all-normal"
+            >
+              <ArrowRight size={16} className="mr-2" />
+              Continue as Guest
+            </motion.button>
+          </div>
+
           <div className="space-y-3">
             <button
               onClick={handleGoogleAuth}
               disabled={isLoading}
-              className="btn btn-outline w-full flex items-center justify-center transition-all-normal hover:bg-secondary/50"
+              className="btn btn-outline w-full flex items-center justify-center transition-all-normal hover:bg-secondary/50 py-3 px-6 text-base font-medium"
             >
-              <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C4.01 20.07 7.68 23 12 23z" />
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
@@ -260,17 +285,6 @@ function Login() {
               </svg>
               Continue with Google
             </button>
-            
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={continueAsGuest}
-              disabled={isLoading}
-              className="btn btn-secondary w-full transition-all-normal"
-            >
-              <ArrowRight size={16} className="mr-2" />
-              Continue as Guest
-            </motion.button>
           </div>
 
           <p className="text-sm text-muted-foreground mt-6 text-center">
