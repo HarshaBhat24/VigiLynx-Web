@@ -5,6 +5,7 @@ import { supabase } from '../../supabase';
 import { useAuth } from '../contexts/AuthContext';
 import AlertMessage from './ui/AlertMessage';
 import PasswordSecurityCheck from './ui/PasswordSecurityCheck';
+import { ThemeToggle } from './ui/ThemeToggle';
 
 function Login() {
   const [error, setError] = useState(null);
@@ -58,7 +59,12 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-3 sm:px-4 py-6 sm:py-10 md:py-16">
+    <div className="min-h-screen flex items-center justify-center px-3 sm:px-4 py-6 sm:py-10 md:py-16 relative">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle />
+      </div>
+      
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -250,7 +256,7 @@ function Login() {
           <div className="mb-6 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200/50 dark:border-blue-700/50">
             <div className="text-center mb-3">
               <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-1">
-                🚀 Try VigiLynx Without Signing Up
+                Try VigiLynx Without Signing Up
               </h3>
               <p className="text-xs text-blue-600 dark:text-blue-300">
                 Explore our cybersecurity features instantly

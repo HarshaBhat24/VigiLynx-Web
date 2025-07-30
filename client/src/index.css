@@ -93,7 +93,7 @@
   .dark {
     /* Updated Dark Mode Colors */
     --background: 220 20% 3%;
-    --foreground: 210 40% 98%;
+    --foreground: 210 40% 98%; /* Very light for better readability */
     --background-muted: 220 20% 5%;
 
     --border: 216 34% 15%;
@@ -106,7 +106,7 @@
     
     /* Secondary: Deep blue-gray */
     --secondary: 215 25% 15%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary-foreground: 210 40% 98%; /* Improved text color */
     --secondary-muted: 215 25% 10%;
     
     /* Accent: Glowing cyan-blue */
@@ -115,18 +115,18 @@
     --accent-muted: 200 98% 25%;
 
     --muted: 215 16% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 215 20% 75%; /* Brighter for better readability */
 
     --popover: 220 20% 4%;
     --popover-foreground: 210 40% 98%;
 
     --card: 220 20% 5%;
-    --card-foreground: 210 40% 98%;
+    --card-foreground: 210 40% 98%; /* Bright text on dark cards */
     --card-border: 216 34% 15%;
 
     --sidebar: 222 47% 6%; 
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-muted: 215 20% 65%;
+    --sidebar-muted: 215 20% 75%; /* Improved sidebar muted text */
 
     --success: 142.1 70.6% 45.3%;
     --warning: 48 96% 53%;
@@ -153,12 +153,25 @@ html, body {
   padding: 0;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   height: 100%;
-  overflow: hidden;
+  /* Remove overflow: hidden to allow scrolling */
+  overflow: auto;
   line-height: 1.6;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  /* Base colors that will be inherited */
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure root element gets proper colors */
+#root {
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {

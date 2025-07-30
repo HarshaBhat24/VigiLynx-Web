@@ -32,6 +32,10 @@ import PasswordChecker from './pages/PasswordChecker';
 import PasswordGenerator from './pages/PasswordGenerator';
 import Learn from './components/Learn';
 
+// Auth Pages
+import { Login as LoginPage } from './pages/auth/Login';
+import { Register as RegisterPage } from './pages/auth/Register';
+
 // Pages
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
@@ -149,19 +153,43 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
+          {/* Auth Routes - No Layout wrapper to avoid header/sidebar overlap */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          
+          {/* Public Pages with Layout */}
           <Route path="/about-us" element={<PageWithLayout Component={AboutUs} />} />
           <Route path="/contact-us" element={<PageWithLayout Component={ContactUs} />} />
           <Route path="/cyber-news" element={<PageWithLayout Component={CyberNews} />} />
           <Route path="/password-generator" element={<PageWithLayout Component={PasswordGenerator} />} />
           <Route path="/learn" element={<PageWithLayout Component={Learn} />} />
-          <Route path="*" element={
-            <Layout>
-              {(view, setView) => <MainContent view={view} setView={setView} />}
-            </Layout>
-          } />
+          
+          {/* Main App Content */}
+          <Route path="*" element={<AppContent />} />
         </Routes>
       </AuthProvider>
     </Router>
+  );
+}
+
+function AppContent() {
+  const [view, setView] = useState('cyberguard');
+  const { isLoggedIn } = useAuth();
+
+  if (!isLoggedIn) {
+    // Render auth component without Layout wrapper to avoid header/sidebar overlap
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-auto">
+        <Login />
+      </div>
+    );
+  }
+
+  // Render main app content with Layout for authenticated users
+  return (
+    <Layout>
+      {(view, setView) => <MainContent view={view} setView={setView} />}
+    </Layout>
   );
 }
 
